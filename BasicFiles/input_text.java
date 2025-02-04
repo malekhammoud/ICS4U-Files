@@ -1,3 +1,5 @@
+package BasicFiles;
+
 import java.util.Scanner;
 
 public class input_text {
