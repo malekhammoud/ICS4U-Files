@@ -6,7 +6,7 @@ public class guessing_game {
     public static void main(String[] args) {
         System.out.println("Guess a number between 1 and 100");
         Random rand = new Random();
-        int number = rand.nextInt(100);
+        int number = rand.nextInt(1,100);
         while (true){
             try{
                 System.out.print("Your guess: ");
