@@ -10,5 +10,4 @@ public class input_text {
         else if (age < 20) System.out.println("You are a teenager.");
         else System.out.println("You are an adult.");
     }
-
 }
