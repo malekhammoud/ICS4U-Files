@@ -15,7 +15,7 @@ class simplemotion extends JComponent {
     // of your animated object.
     int ballX = 50;
     int ballY = 50;
-    final int BALL_SIZE = 30;
+    final int BALL_SIZE = 40;
 
     // Ball's speed for x and y
     int ballSpeedX = 3;
@@ -47,11 +47,11 @@ class simplemotion extends JComponent {
     }
 
     public void playAnimation() {
-        for (int i = 0; i < 100; i++) {
-            squaresx.add(i*50);
-            squaresy.add(0);
+        for (int i = 10; i > 0; i-=1) {
+            squaresx.add((int)(Math.random()*500));
+            squaresy.add((int)(Math.random()*500));
             squaresvx.add((int)(Math.random()*10));
-            squaresvy.add(3);
+            squaresvy.add((int)(Math.random()*10));
         }
         while (true) {
             for(int i = 0; i < squaresx.size(); i++) {
@@ -59,10 +59,41 @@ class simplemotion extends JComponent {
                 squaresy.set(i, squaresy.get(i)+squaresvy.get(i));
                 if (squaresx.get(i)< 0 ||  squaresx.get(i)+BALL_SIZE > 800){
                     squaresvx.set(i, -1*squaresvx.get(i));
-                } else if (squaresy.get(i) <0 || squaresy.get(i) + BALL_SIZE > 580) {
+                } else if (squaresy.get(i) < 0 || squaresy.get(i) + BALL_SIZE > getHeight()) {
                     squaresvy.set(i, -1*squaresvy.get(i));
                 }
             }
+            for(int i = 0; i < squaresx.size(); i++) {
+                for(int j = 0; j < squaresx.size(); j++) {
+                    if (((squaresx.get(i)<squaresx.get(j)+BALL_SIZE)&&(squaresy.get(i)<squaresy.get(j)+BALL_SIZE && squaresy.get(i)+BALL_SIZE>squaresy.get(j) && squaresx.get(i)>squaresx.get(j))) ){
+                        if((Math.abs(squaresvx.get(i)) == squaresvx.get(i) && Math.abs(squaresvx.get(j)) == squaresvx.get(j)) || (Math.abs(squaresvx.get(i)) != squaresvx.get(i) && Math.abs(squaresvx.get(j)) != squaresvx.get(j)) ) {
+                            if (Math.abs(squaresvx.get(i))<Math.abs(squaresvx.get(j))) {
+                                squaresvx.set(j, (int)(-0.8*squaresvx.get(j)));
+                                squaresvx.set(i, (int)(1.3*squaresvx.get(i)));
+                            }else if (Math.abs(squaresvx.get(i))>Math.abs(squaresvx.get(j))) {
+                                squaresvx.set(i, (int)(-0.8*squaresvx.get(i)));
+                                squaresvx.set(j, (int)(1.3*squaresvx.get(j)));
+                            }
+                            if((Math.abs(squaresvy.get(i)) == squaresvy.get(i) && Math.abs(squaresvy.get(j)) == squaresvy.get(j)) || (Math.abs(squaresvy.get(i)) != squaresvy.get(i) && Math.abs(squaresvy.get(j)) != squaresvy.get(j)) ) {
+                                if (Math.abs(squaresvy.get(i)) < Math.abs(squaresvy.get(j))) {
+                                    squaresvy.set(j, (int) (-0.8 * squaresvy.get(j)));
+                                    squaresvy.set(i, (int) (1.3 * squaresvy.get(i)));
+                                } else if (Math.abs(squaresvy.get(i)) > Math.abs(squaresvy.get(j))) {
+                                    squaresvy.set(i, (int) (-0.8 * squaresvy.get(i)));
+                                    squaresvy.set(j, (int) (1.3 * squaresvy.get(j)));
+                                }
+                            }
+                        }else{
+                            squaresvx.set(i, -1*squaresvx.get(i));
+                            squaresvx.set(j, -1*squaresvx.get(j));
+                        }
+                    } else if ((squaresy.get(i)<squaresy.get(j)+BALL_SIZE)&&(squaresx.get(i)<squaresx.get(j)+BALL_SIZE && squaresx.get(i)+BALL_SIZE>squaresx.get(j) && squaresy.get(i)>squaresy.get(j)))  {
+                        squaresvy.set(i, -1*squaresvy.get(i));
+                        squaresvy.set(j, -1*squaresvy.get(j));
+                    }
+                }
+            }
+
             Toolkit.getDefaultToolkit().sync();
             repaint();
             pause(30);
