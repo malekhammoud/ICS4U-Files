@@ -83,7 +83,7 @@ public class calculator {
                 }
             }
         }
-        System.out.println("The answer is " + total);
+        System.out.println("The answer is: " + total);
 
     }
 }
