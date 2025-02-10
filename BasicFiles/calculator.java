@@ -31,18 +31,22 @@ public class calculator {
         boolean split = false;
         String handel = "";
         int count = 0;
+
         for (int i = 0; i < tokens.length; i++) {
-            if (tokens.length-1==i){
+            if(i+1 < tokens.length){
+                if(!(tokens[i].equals("+") || tokens[i].equals("-") || tokens[i].equals("x") || tokens[i].equals("/") || i == tokens.length-1 )) {
+                    handel += tokens[i];
+                }
+                else {
+                    parsedTokens[count] = handel;
+                    count += 1;
+                    parsedTokens[count] = tokens[i];
+                    count += 1;
+                    handel = "";
+                }}
+            else{
                 handel += tokens[i];
-            }
-            if (tokens[i].equals("+") || tokens[i].equals("-") || tokens[i].equals("*") || tokens[i].equals("/") ||tokens.length-1==i ) {
                 parsedTokens[count] = handel;
-                count += 1;
-                parsedTokens[count] = tokens[i];
-                count += 1;
-                handel = "";
-            }else {
-                handel += tokens[i];
             }
         }
         for (int j = 0; j < parsedTokens.length; j++) {
@@ -62,12 +66,20 @@ public class calculator {
                 operator = "+";
             }else if(tokens[i].equals("-")){
                 operator = "-";
+            }else if(tokens[i].equals("x")){
+                operator = "x";
+            }else if(tokens[i].equals("/")){
+                operator = "/";
             }
             else if (! tokens.equals(" ")){
                 if (operator.equals("+")){
                     total = add(total, Integer.valueOf(tokens[i]));
                 }else if (operator.equals("-")){
                     total = subtract(total, Integer.valueOf(tokens[i]));
+                }else if (operator.equals("x")){
+                    total = multipliy(total, Integer.valueOf(tokens[i]));
+                }else if (operator.equals("/")){
+                    total = divide(total, Double.valueOf(tokens[i]).doubleValue());
                 }
             }
         }
