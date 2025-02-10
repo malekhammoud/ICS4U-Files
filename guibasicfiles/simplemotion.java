@@ -15,7 +15,7 @@ class simplemotion extends JComponent {
     // of your animated object.
     int ballX = 50;
     int ballY = 50;
-    final int BALL_SIZE = 40;
+    final int BALL_SIZE = 30;
 
     // Ball's speed for x and y
     int ballSpeedX = 3;
@@ -47,7 +47,7 @@ class simplemotion extends JComponent {
     }
 
     public void playAnimation() {
-        for (int i = 10; i > 0; i-=1) {
+        for (int i = 50; i > 0; i-=1) {
             squaresx.add((int)(Math.random()*500));
             squaresy.add((int)(Math.random()*500));
             squaresvx.add((int)(Math.random()*10));
@@ -70,22 +70,28 @@ class simplemotion extends JComponent {
                             if (Math.abs(squaresvx.get(i))<Math.abs(squaresvx.get(j))) {
                                 squaresvx.set(j, (int)(-0.8*squaresvx.get(j)));
                                 squaresvx.set(i, (int)(1.3*squaresvx.get(i)));
+
                             }else if (Math.abs(squaresvx.get(i))>Math.abs(squaresvx.get(j))) {
                                 squaresvx.set(i, (int)(-0.8*squaresvx.get(i)));
                                 squaresvx.set(j, (int)(1.3*squaresvx.get(j)));
                             }
-                            if((Math.abs(squaresvy.get(i)) == squaresvy.get(i) && Math.abs(squaresvy.get(j)) == squaresvy.get(j)) || (Math.abs(squaresvy.get(i)) != squaresvy.get(i) && Math.abs(squaresvy.get(j)) != squaresvy.get(j)) ) {
-                                if (Math.abs(squaresvy.get(i)) < Math.abs(squaresvy.get(j))) {
-                                    squaresvy.set(j, (int) (-0.8 * squaresvy.get(j)));
-                                    squaresvy.set(i, (int) (1.3 * squaresvy.get(i)));
-                                } else if (Math.abs(squaresvy.get(i)) > Math.abs(squaresvy.get(j))) {
-                                    squaresvy.set(i, (int) (-0.8 * squaresvy.get(i)));
-                                    squaresvy.set(j, (int) (1.3 * squaresvy.get(j)));
-                                }
-                            }
-                        }else{
+                        }
+                        else{
                             squaresvx.set(i, -1*squaresvx.get(i));
                             squaresvx.set(j, -1*squaresvx.get(j));
+                        }
+                        if((Math.abs(squaresvy.get(i)) == squaresvy.get(i) && Math.abs(squaresvy.get(j)) == squaresvy.get(j)) || (Math.abs(squaresvy.get(i)) != squaresvy.get(i) && Math.abs(squaresvy.get(j)) != squaresvy.get(j)) && false ) {
+                            if (Math.abs(squaresvy.get(i)) < Math.abs(squaresvy.get(j))) {
+                                squaresvy.set(j, (int) (-0.8 * squaresvy.get(j)));
+                                squaresvy.set(i, (int) (1.3 * squaresvy.get(i)));
+                            } else if (Math.abs(squaresvy.get(i)) > Math.abs(squaresvy.get(j))) {
+                                squaresvy.set(i, (int) (-0.8 * squaresvy.get(i)));
+                                squaresvy.set(j, (int) (1.3 * squaresvy.get(j)));
+                            }
+                        }
+                        else{
+                            squaresvy.set(i, -1*squaresvy.get(i));
+                            squaresvy.set(j, -1*squaresvy.get(j));
                         }
                     } else if ((squaresy.get(i)<squaresy.get(j)+BALL_SIZE)&&(squaresx.get(i)<squaresx.get(j)+BALL_SIZE && squaresx.get(i)+BALL_SIZE>squaresx.get(j) && squaresy.get(i)>squaresy.get(j)))  {
                         squaresvy.set(i, -1*squaresvy.get(i));
