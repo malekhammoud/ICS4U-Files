@@ -1,0 +1,10 @@
+hi
+this is a test of writing to a 
+file
+it works!
+st
+hi
+newline, lets go
+hiq
+sting1
+sting2
