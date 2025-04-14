@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CCC questions/CCC questions.iml" filepath="$PROJECT_DIR$/CCC questions/CCC questions.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ICS4U-Files.iml" filepath="$PROJECT_DIR$/.idea/ICS4U-Files.iml" />
+      <module fileurl="file://$PROJECT_DIR$/games/games.iml" filepath="$PROJECT_DIR$/games/games.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pain/pain.iml" filepath="$PROJECT_DIR$/pain/pain.iml" />
     </modules>
   </component>
 </project>

@@ -23,7 +23,7 @@ class simplemotion extends JComponent {
 
     private static final int UPDATE_RATE = 24;
 
-    // This special method is automatically called when the scene needs to be drawn.
+    Player player1 = new Player(300, 300, 60, 30, 0.5);
     public void paintComponent(Graphics g) {
         g.setColor(Color.black);
         g.fillRect(0, 0, 800, 600);
@@ -33,6 +33,7 @@ class simplemotion extends JComponent {
             g.fillRect(squaresx.get(i), squaresy.get(i), BALL_SIZE, BALL_SIZE);
         }
 
+        player1.draw(g);
     }
 
 
@@ -40,6 +41,7 @@ class simplemotion extends JComponent {
     public void pause(int ms) {
         try {
             Thread.sleep(ms);
+            System.out.println("HI");
         }
         catch (InterruptedException ex) {
             System.out.println("Error occurred!");
