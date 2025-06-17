@@ -12,8 +12,10 @@ public class LinkedListDemo {
         list.addAtFront("Ben");
         System.out.println(list);
 
+        list.remove("Ben");
+        list.remove("Hari");
+        list.remove("Leo");
         System.out.println(list);
-        System.out.println(list.size());
 
     }
 }
